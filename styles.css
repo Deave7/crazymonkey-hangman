@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    color: white;
+    background-color: grey;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.broder {
+    border: solid black 2px;
+}
+
