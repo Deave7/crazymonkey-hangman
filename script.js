@@ -10,6 +10,8 @@ function getRandomWord() {
 
 //tangentbords-input Gustav
 
+//Låt endast användaren fylla i en bokstav åt gången
+
 guessButton = document.getElementById('guessButton')
 guessButton.addEventListener('click', function() {
     storeGuess()
@@ -29,6 +31,8 @@ document.addEventListener('keydown', (event) => {
 //*knapp-input
 
 //skriv ut resultat per gissning (använda bokstäver etc)
+
+//skapa en lista med bokstäver som redan har gissats på och låt sedan en del av if satsen kontrollera så att man inte gissar på samma 
 
 let counterOne = 0;
 const failList = document.querySelector("body > main > section.button-container > ul")
