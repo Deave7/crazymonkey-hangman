@@ -81,3 +81,20 @@ function checkGuess(keyInput) {
 
 //* highscores? 
 
+/* document.getElementById("lettersGuessed").innerHTML += lettersGuessed;
+document.getElementById("guessesLeft").innerHTML = guessesLeft;
+
+  guessesLeft--;
+
+  if (guessesLeft === -1) {
+    alert("You Loose!");
+  } */
+
+// 
+
+if (progressWord.indexOf('_') == -1 ){ // if there are no dashes left
+    //win!
+  }else if (guessesLeft <= 0){
+    //player has lost
+  }
+
