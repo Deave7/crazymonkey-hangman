@@ -28,8 +28,6 @@ function getRandomWord() {
 
 //tangentbords-input Gustav
 
-//Låt endast användaren fylla i en bokstav åt gången
-
 guessButton = document.getElementById('guessButton')
 guessButton.addEventListener('click', function() {
     storeGuess()
@@ -40,32 +38,47 @@ function storeGuess() {
     document.getElementById('guessInput').value = ''
 }
 
-/* let keyValue; 
-
-document.addEventListener('keydown', (event) => {
-    keyValue = event.key;
-}) */
-
 //*knapp-input
 
 //skriv ut resultat per gissning (använda bokstäver etc)
+let answer ='';
+function setAnswer() {
+    for (i = 0; i < 5; i++) {
+       answer += '_'
+       printAnswer = document.querySelector("section.answer-container")
+       printAnswer.innerHTML = answer;
+   }
+}
 
-//skapa en lista med bokstäver som redan har gissats på och låt sedan en del av if satsen kontrollera så att man inte gissar på samma 
+function updateAnswer() {
+    printAnswer = document.querySelector("section.answer-container")
+    printAnswer.innerHTML = answer;
+}
+
+//Ska det kontrolleras om det gissas på en bokstav som redan var rätt? 
 
 let counterOne = 0;
 const failList = document.querySelector("body > main > section.button-container > ul")
+let wrongCharacters = [];
 function checkGuess(keyInput) {
-    if (key.includes(keyInput)) {
-        //fyll i ord i resultet
+    if (wrongCharacters.includes(keyInput)) {
+        prompt(`You have already guessed: ${keyInput}, please choose a different letter `)
+    }
+    else if (key.includes(keyInput)) {
+        keyIndex = key.indexOf(keyInput)
+        answer = answer.split('');
+        answer[keyIndex] = keyInput;
+        answer = answer.join('');
+        updateAnswer()
     }
     else {
+        wrongCharacters.push(keyInput)
         let li = document.createElement('li')
         li.innerHTML = keyInput
         failList.appendChild(li)
         counterOne++
     }
 }
-
 
 //Justerar bilden Maja
 
