@@ -30,7 +30,7 @@
         </section>
 
         <section class="button-container">
-            <input id="guessInput" type="text" maxlength="1" placeholder="Write your letter here!">
+            <input id="guessInput" type="text" maxlength="1" placeholder="Write your letter here!" onkeydown="return /[a-zA-Z]/i.test(event.key)">
             <button id="guessButton" class="button">Guess</button>
             <ul>
                <li>a</li> 
