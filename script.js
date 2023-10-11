@@ -29,6 +29,32 @@ const scaffold = document.getElementById("scaffold");
 //array för alla delar av svg
 const hangman = [scaffold, head, body, arms, legs];
 
+
+function startGame() {
+    gameState = 1;
+    guessCounter = 0;
+    wrongCharacters = [];
+    key = getRandomWord()
+    setAnswer(key, answerList)
+}
+
+function resetGame(answerList, failList) {
+    while(failList.firstChild) {
+        failList.removeChild(failList.firstChild)
+    }
+
+    while(answerList.firstChild) {
+        answerList.removeChild(answerList.firstChild)
+    }
+}
+
+function printFailList(wrongCharacters, failList) {
+    wrongCharacters.push(keyInput)
+    let li = document.createElement('li')
+    li.innerHTML = keyInput
+    failList.appendChild(li)
+}
+
 function getRandomWord() {
     let key = randomWords[Math.floor(Math.random() * randomWords.length)]
     return key
