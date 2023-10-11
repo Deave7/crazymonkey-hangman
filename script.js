@@ -100,10 +100,7 @@ function checkGuess(keyInput) {
     }
 }
 
-
 //Justerar bilden Maja
-
-//vinst/förlust Ossian
 
 //* Meny - tillåta lokal multiplayer 
 
@@ -114,47 +111,6 @@ function checkGuess(keyInput) {
 //* poängsystem?
 
 //* highscores? 
-
-/* document.getElementById("lettersGuessed").innerHTML += lettersGuessed;
-document.getElementById("guessesLeft").innerHTML = guessesLeft;
-
-  guessesLeft--;
-
-  if (guessesLeft === -1) {
-    alert("You Loose!");
-  } */
-
-// Om spelet är slut
-
-let errorsLeft = 6
-
-hangman.isFinished = function () {
-  if (progressWord.indexOf('_') < 0 ){ 
-    return "You win!"
-  } else if (errorsLeft <= 0){
-    return "Game over!"
-  }
-}
-
-// Skapa en modal dialog som poppar upp när kriterierna för ett avslutat spel
-// är = true
-// Skapa HTML-klasser för dessa 
-
-/* function showModal () {
-  let modal = document.getElementById("myModal");
-  modal.style.display = "block";
-}
-
-function closeModal () {
-  let modal = document.getElementById("myModal");
-  modal.style.display = "none";
-}
-
-let isGameOver = true;
-
-if (isGameOver) {
-  showModal();
-} */
 
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -177,7 +133,6 @@ startButton.addEventListener("click", () => {
 
 // kanske ska visa det rätta ordet också?
 
-gameState = 0;
 if (gameState === 0) {
   startModal.style.display = "block"
   mainContent.style.display = "none"
@@ -225,39 +180,43 @@ kan med hjälp av counter veta när spelet är slut */
 } 
 
 första if innan funktionen hangmanPart och andra efter*/
-
+/* 
 function hangmansvg(counter) {
   counter = counter -1;
   }
   let hangmanPart = hangman[counter];
-  hangmanPart.style.display = "block";
+  hangmanPart.style.display = "block"; */
   /* counter++;  TEST MED MAJAS PROVKNAPP*/
   
-  function startGame(){
+/*   function startGame(){
       
   const head = document.getElementById("head");
   head.style.display = "none";
   
   }
+   */
   
   
   
-  
-  function hangmansvg(params) {
+/*   function hangmansvg(params) {
       if (guessIncorrect) {
           /* ta fram en del av svg */
-      } else {
+      /* } else {
           
       }
     }
+ */
+
   //Slumpfunktionen 
   
   //funktion som döljer alla element i array/gubben när spelet börjar
-function startGame(){
+
+
+/*   function startGame(){
   hangman.forEach(function(item){
       item.style.display = "none";
   }
   )
 
 
-}
+} */
