@@ -1,6 +1,6 @@
 // Initierar variabler 
 
-let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
+let gameState = 1; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
 let guessCounter = 0;
 
 //hämtar varje path från svg och deklarerar
@@ -36,11 +36,11 @@ kan med hjälp av counter veta när spelet är slut */
 
 första if innan funktionen hangmanPart och andra efter*/
 
-function hangmansvg(counter) {
+/* function hangmansvg(counter) {
 counter = counter -1;
 }
 let hangmanPart = hangman[counter];
-hangmanPart.style.display = "block";
+hangmanPart.style.display = "block"; */
 /* counter++;  TEST MED MAJAS PROVKNAPP*/
 
 function startGame(){
@@ -172,7 +172,7 @@ hangman.isFinished = function () {
 // är = true
 // Skapa HTML-klasser för dessa 
 
-function showModal () {
+/* function showModal () {
   let modal = document.getElementById("myModal");
   modal.style.display = "block";
 }
@@ -186,7 +186,51 @@ let isGameOver = true;
 
 if (isGameOver) {
   showModal();
+} */
+
+const myModal = document.getElementsByClassName("myModal")
+const startModal = document.getElementById("startModal")
+const mainContent = document.getElementById("mainContent")
+const winModal = document.getElementById("winModal")
+const loseModal = document.getElementById("loseModal")
+const startButton = document.getElementById("startButton")
+const restartButton = document.getElementById("restartButton")
+
+
+
+startButton.addEventListener("click", () => {
+  startModal.style.display = "none";
+  mainContent.style.display = "block";
+
+})
+
+// om gameState - 2 = visas winModal och resten display: none;
+// annars om gameState - 3 = visas loseModal och resten display: none;
+
+// kanske ska visa det rätta ordet också?
+if (gameState === 0) {
+  startModal.style.display = "block"
+  mainContent.style.display = "none"
+  winModal.style.display = "none"
+  loseModal.style.display = "none"
+} 
+else if (gameState === 1) {
+  startModal.style.display = "none"
+  mainContent.style.display = "block"
+}
+else if (gameState === 2) {
+  winModal.style.display = "block"
+  mainContent.style.display = "none"
+} else if (gameState === 3) {
+  loseModal.style.display = "block"
+  mainContent.style.display = "none"
 }
 
 
-// 
+// Få till så den går tillbaks till gameState 1 (starta om)
+restartButton.addEventListener("click", () => {
+  winModal.style.display = "none"
+  loseModal.style.display = "none"
+  mainContent.style.display = "block"
+}
+)
