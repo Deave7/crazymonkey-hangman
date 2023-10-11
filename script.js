@@ -1,3 +1,8 @@
+// Initierar variabler 
+
+let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
+let guessCounter = 0;
+
 //hämtar varje path från svg och deklarerar
 const head = document.getElementById("head");
 const body = document.getElementById("body");
