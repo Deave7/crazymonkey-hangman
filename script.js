@@ -9,9 +9,9 @@ const randomWords = ['ability', 'able', 'about', 'above', 'accept', 'according',
 
 //Väljer ut element
 const guessButton = document.getElementById('guessButton')
-const failList = document.querySelector("body > main > section.button-container > ul")
+const failList = document.querySelector("#mainContent > main > section.button-container > ul > li")
 const answerList = document.querySelector("section.answer-container")
-const guessCountList = document.querySelector("body > main > section.guesses > b")
+const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
 
 //Sätter knappar
 
@@ -122,6 +122,7 @@ function checkGuess(keyInput) {
             updateGuesses(wrongGuessCounter, guessCountList)
             printFailList(wrongCharacters, failList)
             gameState = 3
+            checkGameState(gameState)
             }
     }
 }
@@ -159,6 +160,8 @@ startButton.addEventListener("click", () => {
 
 // kanske ska visa det rätta ordet också?
 
+//nedanstående behöver vara en funktion som kallas varje gång vi ändrar på gameState
+
 if (gameState === 0) {
   startModal.style.display = "block"
   mainContent.style.display = "none"
@@ -177,7 +180,8 @@ else if (gameState === 2) {
   winModal.style.display = "block"
   loseModal.style.display = "none"
   
-} else if (gameState === 3) {
+} 
+else if (gameState === 3) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
   winModal.style.display = "none"
