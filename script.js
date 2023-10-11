@@ -208,6 +208,8 @@ startButton.addEventListener("click", () => {
 // annars om gameState - 3 = visas loseModal och resten display: none;
 
 // kanske ska visa det rätta ordet också?
+
+gameState = 0;
 if (gameState === 0) {
   startModal.style.display = "block"
   mainContent.style.display = "none"
@@ -217,16 +219,23 @@ if (gameState === 0) {
 else if (gameState === 1) {
   startModal.style.display = "none"
   mainContent.style.display = "block"
+  winModal.style.display = "none"
+  loseModal.style.display = "none"
 }
 else if (gameState === 2) {
+  startModal.style.display = "none"
+  mainContent.style.display = "none"
   winModal.style.display = "block"
-  mainContent.style.display = "none"
+  loseModal.style.display = "none"
+  
 } else if (gameState === 3) {
-  loseModal.style.display = "block"
+  startModal.style.display = "none"
   mainContent.style.display = "none"
+  winModal.style.display = "none"
+  loseModal.style.display = "block"
 }
 
-gameState = 2;
+
 
 // Få till så den går tillbaks till gameState 1 (starta om)
 /* restartButton.addEventListener("click", () => {
