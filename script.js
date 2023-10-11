@@ -194,7 +194,7 @@ const mainContent = document.getElementById("mainContent")
 const winModal = document.getElementById("winModal")
 const loseModal = document.getElementById("loseModal")
 const startButton = document.getElementById("startButton")
-const restartButton = document.getElementById("restartButton")
+const restartButton = document.getElementsByClassName("restartButton")
 
 
 
@@ -226,11 +226,12 @@ else if (gameState === 2) {
   mainContent.style.display = "none"
 }
 
+gameState = 2;
 
 // Få till så den går tillbaks till gameState 1 (starta om)
-restartButton.addEventListener("click", () => {
+/* restartButton.addEventListener("click", () => {
   winModal.style.display = "none"
   loseModal.style.display = "none"
   mainContent.style.display = "block"
 }
-)
+) */
