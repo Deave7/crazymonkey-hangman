@@ -151,11 +151,37 @@ document.getElementById("guessesLeft").innerHTML = guessesLeft;
     alert("You Loose!");
   } */
 
-// 
+// Om spelet är slut
 
-if (progressWord.indexOf('_') == -1 ){ // if there are no dashes left
-    //win!
-  }else if (guessesLeft <= 0){
-    //player has lost
+let errorsLeft = 6
+
+hangman.isFinished = function () {
+  if (progressWord.indexOf('_') < 0 ){ 
+    return "You win!"
+  } else if (errorsLeft <= 0){
+    return "Game over!"
   }
+}
 
+// Skapa en modal dialog som poppar upp när kriterierna för ett avslutat spel
+// är = true
+// Skapa HTML-klasser för dessa 
+
+function showModal () {
+  let modal = document.getElementById("myModal");
+  modal.style.display = "block";
+}
+
+function closeModal () {
+  let modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+let isGameOver = true;
+
+if (isGameOver) {
+  showModal();
+}
+
+
+// 

@@ -8,6 +8,13 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <div class="myModal" id="startModal">
+            <div class="modal-content">
+                <h2>Hangman</h2>
+                <button id="startButton">Play Game</button>
+            </div>
+        </div>
+
     <header class="broder">
         <h1>Hangman</h1>
     </header>
@@ -41,6 +48,13 @@
             Incorrect guesses:
             <b>0 / 6</b>
         </section>
+
+        <div class="modal" id="endModal">
+            <div class="modal-content">
+                <h2>Game Over</h2>
+                <button id="restartButton">Restart Game</button>
+            </div>
+        </div>
     </main>
 <button onclick="startGame();">
 tryck här
@@ -51,11 +65,6 @@ tryck här
     counter
     </button>
 
-    <section class="win-loss-container">
-        <div class="win">
-        </div>
-        <div class="loss"></div>
-    </section> 
     <footer class="broder">Maja, Ossian och Gustav, tack och hej</footer>
 </body>
 </html>

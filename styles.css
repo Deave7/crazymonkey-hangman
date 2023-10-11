@@ -31,3 +31,8 @@ section.answer-container {
     visibility: visible;
 } */
 
+.win-loss-container {
+    background-color: white;
+    color: black;
+    position: absolute;
+}
