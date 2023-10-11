@@ -20,3 +20,8 @@ body {
     border: solid black 2px;
 }
 
+.win-loss-container {
+    background-color: white;
+    color: black;
+    position: absolute;
+}
