@@ -29,6 +29,7 @@ const scaffold = document.getElementById("scaffold");
 //array för alla delar av svg
 const hangman = [scaffold, head, body, arms, legs];
 
+
 function startGame() {
     gameState = 1;
     guessCounter = 0;
