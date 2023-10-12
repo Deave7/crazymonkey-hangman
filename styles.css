@@ -6,11 +6,13 @@
 }
 
 body {
+    display: flex;
     color: white;
     background-color: grey;
     justify-content: center;
     text-align: center;
     max-width: 600px;
+    height: 100vh;
     margin: auto;
 }
 
@@ -41,6 +43,13 @@ main.item > * {
     font-weight: bold;
 }
 
+.guesses {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
 #guessInput {
     border-radius: 0.5rem;
     width: 11rem;
@@ -59,7 +68,13 @@ main.item > * {
 }
 
 .guesses > .button {
-    margin-top: 10rem;
+    margin-top: auto;
+    
+}
+
+#mainContent > main > section.guesses {
+    margin: 0;
+    
 }
 
 #guessInput:focus {
