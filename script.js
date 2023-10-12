@@ -1,7 +1,7 @@
 // Initierar variabler 
 
 let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
-let wrongGuessCounter = -1;
+let wrongGuessCounter = 0;
 let key = ''
 let answer ='';
 let wrongCharacters = [];
@@ -14,6 +14,7 @@ const failList = document.getElementById("failList")
 const answerList = document.querySelector("section.answer-container")
 const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
+const correctWord = document.getElementsByClassName("correctWord")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -22,6 +23,7 @@ const winModal = document.getElementById("winModal")
 const loseModal = document.getElementById("loseModal")
 const startButton = document.getElementById("startButton")
 const restartButton = document.getElementsByClassName("restartButton")
+
 //Svg
 const ground = document.getElementById("ground");
 const head = document.getElementById("head");
@@ -38,9 +40,9 @@ startButton.addEventListener("click", () => {
 
   for (i=0; i < restartButton.length; i++ ) {
   restartButton[i].addEventListener("click", () => {
-      resetGame(answerList, failList)
-      startGame();
-      checkGameState(gameState)
+    resetGame(answerList, failList)
+    startGame();
+    checkGameState(gameState)
     })
 }
 guessButton.addEventListener('click', function() {
@@ -179,6 +181,8 @@ function checkGuess(keyInput) {
     }
 }
 
+
+
 function checkGameState (gameState) {
 if (gameState === 0) {
   startModal.style.display = "grid"
@@ -198,15 +202,27 @@ else if (gameState === 2) {
   mainContent.style.display = "none"
   winModal.style.display = "grid"
   loseModal.style.display = "none"
-  
+  for (let i = 0; i < correctWord.length; i++) {
+    correctWord[i].innerHTML = "Right answer was: " + key;
+}
 } 
 else if (gameState === 3) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "grid"
+  for (let i = 0; i < correctWord.length; i++) {
+    correctWord[i].innerHTML = "Right answer was: " + key;
 }
 }
+}
+
+
+
+
+
+
+
 
 
 //* Meny - tillåta lokal multiplayer 
