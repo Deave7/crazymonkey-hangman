@@ -1,7 +1,7 @@
 // Initierar variabler 
 
 let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
-let wrongGuessCounter = -1;
+let wrongGuessCounter = 0;
 let key = ''
 let answer ='';
 let wrongCharacters = [];
@@ -12,7 +12,9 @@ const randomWords = ['ability', 'able', 'about', 'above', 'accept', 'according',
 const guessButton = document.getElementById('guessButton')
 const failList = document.getElementById("failList")
 const answerList = document.querySelector("section.answer-container")
+const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
+const correctWord = document.getElementsByClassName("correctWord")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -21,6 +23,7 @@ const winModal = document.getElementById("winModal")
 const loseModal = document.getElementById("loseModal")
 const startButton = document.getElementById("startButton")
 const restartButton = document.getElementsByClassName("restartButton")
+
 //Svg
 const ground = document.getElementById("ground");
 const head = document.getElementById("head");
@@ -37,9 +40,9 @@ startButton.addEventListener("click", () => {
 
   for (i=0; i < restartButton.length; i++ ) {
   restartButton[i].addEventListener("click", () => {
+    resetGame(answerList, failList)
     startGame();
     checkGameState(gameState)
-    resetGame(answerList, failList)
     })
 }
 guessButton.addEventListener('click', function() {
@@ -47,10 +50,24 @@ guessButton.addEventListener('click', function() {
     
 })
 
-guessButton.addEventListener('keypress', function(event) { //fortsätt
-    if (event.key === "Enter") {
+addEventListener('keydown', (event) => {
+    if (event.keyCode === 13 && gameState === 0) {
+        startGame()
+        checkGameState(gameState)
+    }
+    else if (event.keyCode === 13 && gameState === 1) {
         guess()
         
+    }
+    else if (event.keyCode === 13 && gameState === 2) {
+        startGame();
+        checkGameState(gameState)
+        resetGame(answerList, failList)
+    }
+    else if (event.keyCode === 13 && gameState === 3) {
+        resetGame(answerList, failList)
+        startGame();
+        checkGameState(gameState)
     }
 })
 
@@ -61,7 +78,6 @@ function startGame() {
     key = getRandomWord()
     setAnswer(key, answerList)
     hideHangman()
-    console.log(key); //test 
 }
 
 function hideHangman() {
@@ -87,6 +103,7 @@ function resetGame(answerList, failList) {
 
     wrongGuessCounter = -1;
     wrongCharacters = [];
+    answer = '';
 
     updateGuesses(wrongGuessCounter, guessCountList)
 }
@@ -103,14 +120,12 @@ function getRandomWord() {
     return key
 }
 
-
 function guess() {
-    keyInput = document.getElementById('guessInput').value
+    keyInput = document.getElementById('guessInput').value.toLowerCase()
     document.getElementById('guessInput').value = ''
 
     checkGuess(keyInput)
 }
-
 
 function setAnswer(key, answerList) {
     for (i = 0; i < key.length; i++) {
@@ -130,9 +145,6 @@ function updateGuesses(wrongGuessCounter, guessCountList) {
     guessCount = guessCount.join('')
     guessCountList.innerHTML = guessCount
 }
-
-//Ska det kontrolleras om det gissas på en bokstav som redan var rätt? 
-
 
 function checkGuess(keyInput) {
     if (wrongCharacters.includes(keyInput) || answer.includes(keyInput)) {
@@ -171,33 +183,48 @@ function checkGuess(keyInput) {
     }
 }
 
+
+
 function checkGameState (gameState) {
 if (gameState === 0) {
-  startModal.style.display = "block"
+  startModal.style.display = "grid"
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "none"
 } 
 else if (gameState === 1) {
   startModal.style.display = "none"
-  mainContent.style.display = "block"
+  mainContent.style.display = "grid"
   winModal.style.display = "none"
   loseModal.style.display = "none"
+  guessInput.focus()
 }
 else if (gameState === 2) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
-  winModal.style.display = "block"
+  winModal.style.display = "grid"
   loseModal.style.display = "none"
-  
+  for (let i = 0; i < correctWord.length; i++) {
+    correctWord[i].innerHTML = "Right answer was: " + key;
+}
 } 
 else if (gameState === 3) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
   winModal.style.display = "none"
-  loseModal.style.display = "block"
+  loseModal.style.display = "grid"
+  for (let i = 0; i < correctWord.length; i++) {
+    correctWord[i].innerHTML = "Right answer was: " + key;
 }
 }
+}
+
+
+
+
+
+
+
 
 
 //* Meny - tillåta lokal multiplayer 
