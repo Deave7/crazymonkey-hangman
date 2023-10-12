@@ -196,7 +196,7 @@ else if (gameState === 1) {
 else if (gameState === 2) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
-  winModal.style.display = "block"
+  winModal.style.display = "grid"
   loseModal.style.display = "none"
   
 } 
