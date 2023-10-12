@@ -162,6 +162,8 @@ startButton.addEventListener("click", () => {
 
 //nedanstående behöver vara en funktion som kallas varje gång vi ändrar på gameState
 
+
+function checkGameState (gameState) {
 if (gameState === 0) {
   startModal.style.display = "block"
   mainContent.style.display = "none"
@@ -187,7 +189,7 @@ else if (gameState === 3) {
   winModal.style.display = "none"
   loseModal.style.display = "block"
 }
-
+}
 
 
 // Få till så den går tillbaks till gameState 1 (starta om)
