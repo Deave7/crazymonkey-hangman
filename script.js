@@ -12,9 +12,29 @@ const guessButton = document.getElementById('guessButton')
 const failList = document.querySelector("#mainContent > main > section.button-container > ul > li")
 const answerList = document.querySelector("section.answer-container")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
+// Modals
+const myModal = document.getElementsByClassName("myModal")
+const startModal = document.getElementById("startModal")
+const mainContent = document.getElementById("mainContent")
+const winModal = document.getElementById("winModal")
+const loseModal = document.getElementById("loseModal")
+const startButton = document.getElementById("startButton")
+const restartButton = document.getElementsByClassName("restartButton")
 
 //Sätter knappar
 
+startButton.addEventListener("click", () => {
+  startGame();
+  checkGameState(gameState)
+  })
+
+  for (i=0; i < restartButton.length; i++ ) {
+  restartButton[i].addEventListener("click", () => {
+    startGame();
+    checkGameState(gameState)
+    resetGame()
+    })
+}
 guessButton.addEventListener('click', function() {
     guess()
 })
@@ -29,6 +49,7 @@ const scaffold = document.getElementById("scaffold");
 //array för alla delar av svg
 const hangman = [scaffold, head, body, arms, legs];
 
+checkGameState(gameState)
 
 function startGame() {
     gameState = 1;
@@ -137,27 +158,10 @@ function checkGuess(keyInput) {
             updateGuesses(wrongGuessCounter, guessCountList)
             printFailList(wrongCharacters, failList)
             gameState = 3
-            checkGameState(gameState)
+            
             }
     }
 }
-
-
-const myModal = document.getElementsByClassName("myModal")
-const startModal = document.getElementById("startModal")
-const mainContent = document.getElementById("mainContent")
-const winModal = document.getElementById("winModal")
-const loseModal = document.getElementById("loseModal")
-const startButton = document.getElementById("startButton")
-const restartButton = document.getElementsByClassName("restartButton")
-
-
-
-startButton.addEventListener("click", () => {
-  startModal.style.display = "none";
-  mainContent.style.display = "block";
-startGame();
-})
 
 // om gameState - 2 = visas winModal och resten display: none;
 // annars om gameState - 3 = visas loseModal och resten display: none;
