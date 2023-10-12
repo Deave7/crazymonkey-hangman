@@ -55,6 +55,8 @@ guessButton.addEventListener('keypress', function(event) { //fortsätt
 })
 
 
+
+
 checkGameState(gameState)
 
 function startGame() {
