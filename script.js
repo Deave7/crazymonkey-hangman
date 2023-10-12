@@ -134,7 +134,7 @@ function updateGuesses(wrongGuessCounter, guessCountList) {
 
 
 function checkGuess(keyInput) {
-    if (wrongCharacters.includes(keyInput)) {
+    if (wrongCharacters.includes(keyInput) || answer.includes(keyInput)) {
         prompt(`You have already guessed: ${keyInput}, please choose a different letter `)
     }
     else if (key.includes(keyInput)) {
