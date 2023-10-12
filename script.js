@@ -1,6 +1,6 @@
 // Initierar variabler 
 
-let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
+let gameState = 3; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
 let wrongGuessCounter = 0;
 let key = ''
 let answer ='';
@@ -196,10 +196,11 @@ else if (gameState === 3) {
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "block"
+  console.log(answer)
 }
 }
 
-
+// let key = '' : ska visa det rätta ordet i gamestate = 3
 
 //* Meny - tillåta lokal multiplayer 
 
