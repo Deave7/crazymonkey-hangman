@@ -23,6 +23,7 @@ const winModal = document.getElementById("winModal")
 const loseModal = document.getElementById("loseModal")
 const startButton = document.getElementById("startButton")
 const restartButton = document.getElementsByClassName("restartButton")
+const sameLetterModal = document.getElementById("sameLetterModal")
 
 //Svg
 const ground = document.getElementById("ground");
@@ -181,6 +182,14 @@ function checkGuess(keyInput) {
     }
 }
 
+function sameGuess() {
+    sameLetterModal.style.display = "grid"
+    sameLetterModal.style.opacity = "1"
+    sameLetterModal.style.zIndex = "1"
+    mainContent.style.filter = "blur(2px)"
+
+    //close modal on clicking! also add the funtion in checkGuess above 
+}
 
 
 function checkGameState (gameState) {
@@ -189,12 +198,14 @@ if (gameState === 0) {
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "none"
+  sameLetterModal.style.display = "none"
 } 
 else if (gameState === 1) {
   startModal.style.display = "none"
   mainContent.style.display = "grid"
   winModal.style.display = "none"
   loseModal.style.display = "none"
+  sameLetterModal.style.display = "none"
   guessInput.focus()
 }
 else if (gameState === 2) {
@@ -202,8 +213,9 @@ else if (gameState === 2) {
   mainContent.style.display = "none"
   winModal.style.display = "grid"
   loseModal.style.display = "none"
+  sameLetterModal.style.display = "none"
   for (let i = 0; i < correctWord.length; i++) {
-    correctWord[i].innerHTML = "Right answer was: " + key;
+    correctWord[i].innerHTML = "The correct word was: " + key;
 }
 } 
 else if (gameState === 3) {
@@ -211,8 +223,9 @@ else if (gameState === 3) {
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "grid"
+  sameLetterModal.style.display = "none"
   for (let i = 0; i < correctWord.length; i++) {
-    correctWord[i].innerHTML = "Right answer was: " + key;
+    correctWord[i].innerHTML = "The correct word was: " + key;
 }
 }
 }

@@ -16,9 +16,9 @@
         <h1>Hangman</h1>
         <h2>How to play Hangman</h2>
         <p>
-          Hangman is a simple word guessing game. Players try to figure out an
-          unknown word by guessing letters. If too many letters which do not
-          appear in the word are guessed, the player is hanged (and loses).
+          Hangman is a simple word guessing game.<br>
+          Players try to figure out an unknown word by guessing letters.<br> 
+          You have may guess the wrong letter five times, on the sixth you lose (and the straw man is hanged!)
         </p>
         <button id="startButton" class="button">Play Game</button>
       </div>
@@ -26,7 +26,8 @@
 
     <div class="myModal" id="winModal">
       <div class="modal-content">
-        <h2>You won!</h2>
+        <h2>Congratulations, you managed to save the strawman by guessing the correct word! </h2>
+        <img src="pictures/win-text.svg" height="100">
         <div class="correctWord"></div>
         <button class="restartButton button">Restart Game</button>
       </div>
@@ -34,9 +35,16 @@
 
     <div class="myModal" id="loseModal">
       <div class="modal-content">
-        <h2>Game Over</h2>
+        <h2>Game Over!<br> You used up all your guesses and the strawman was hanged!</h2>
+        <img src="pictures/hangman.svg" alt="a hanging strawman">
         <div class="correctWord"></div>
         <button class="restartButton button">Restart Game</button>
+      </div>
+    </div>
+
+    <div class="myModal" id="sameLetterModal">
+      <div class="modal-content">
+        <p>You already guessed that letter! Please try something new</p>
       </div>
     </div>
 
@@ -98,8 +106,6 @@
         </section>
 
         <section class="answer-container"></section>
-
-        <div class="sameLetterModal"></div>
 
         <section class="button-container">
           <input

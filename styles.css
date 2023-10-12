@@ -112,6 +112,10 @@ main.item > * {
     color: black;
 }
 
+#winModal > div > img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 section.answer-container {
     letter-spacing: 0.5rem;
 }
