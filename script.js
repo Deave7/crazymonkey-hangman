@@ -104,7 +104,7 @@ function getRandomWord() {
 
 
 function guess() {
-    keyInput = document.getElementById('guessInput').value
+    keyInput = document.getElementById('guessInput').value.toLowerCase()
     document.getElementById('guessInput').value = ''
 
     checkGuess(keyInput)
@@ -172,14 +172,14 @@ function checkGuess(keyInput) {
 
 function checkGameState (gameState) {
 if (gameState === 0) {
-  startModal.style.display = "block"
+  startModal.style.display = "grid"
   mainContent.style.display = "none"
   winModal.style.display = "none"
   loseModal.style.display = "none"
 } 
 else if (gameState === 1) {
   startModal.style.display = "none"
-  mainContent.style.display = "block"
+  mainContent.style.display = "grid"
   winModal.style.display = "none"
   loseModal.style.display = "none"
 }
@@ -194,7 +194,7 @@ else if (gameState === 3) {
   startModal.style.display = "none"
   mainContent.style.display = "none"
   winModal.style.display = "none"
-  loseModal.style.display = "block"
+  loseModal.style.display = "grid"
 }
 }
 
