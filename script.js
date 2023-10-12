@@ -12,6 +12,7 @@ const randomWords = ['ability', 'able', 'about', 'above', 'accept', 'according',
 const guessButton = document.getElementById('guessButton')
 const failList = document.getElementById("failList")
 const answerList = document.querySelector("section.answer-container")
+const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
@@ -37,21 +38,34 @@ startButton.addEventListener("click", () => {
 
   for (i=0; i < restartButton.length; i++ ) {
   restartButton[i].addEventListener("click", () => {
-    startGame();
-    checkGameState(gameState)
-    resetGame(answerList, failList)
+      resetGame(answerList, failList)
+      startGame();
+      checkGameState(gameState)
     })
 }
 guessButton.addEventListener('click', function() {
     guess()
 })
 
-guessButton.addEventListener('keypress', function(event) { //fortsätt
-    if (event.key === "Enter") {
+addEventListener('keydown', (event) => {
+    if (event.keyCode === 13 && gameState === 0) {
+        startGame()
+        checkGameState(gameState)
+    }
+    else if (event.keyCode === 13 && gameState === 1) {
         guess()
     }
+    else if (event.keyCode === 13 && gameState === 2) {
+        startGame();
+        checkGameState(gameState)
+        resetGame(answerList, failList)
+    }
+    else if (event.keyCode === 13 && gameState === 3) {
+        resetGame(answerList, failList)
+        startGame();
+        checkGameState(gameState)
+    }
 })
-
 
 checkGameState(gameState)
 
@@ -60,7 +74,6 @@ function startGame() {
     key = getRandomWord()
     setAnswer(key, answerList)
     hideHangman()
-    console.log(key); //test 
 }
 
 function hideHangman() {
@@ -86,6 +99,7 @@ function resetGame(answerList, failList) {
 
     wrongGuessCounter = -1;
     wrongCharacters = [];
+    answer = '';
 
     updateGuesses(wrongGuessCounter, guessCountList)
 }
@@ -102,14 +116,12 @@ function getRandomWord() {
     return key
 }
 
-
 function guess() {
     keyInput = document.getElementById('guessInput').value.toLowerCase()
     document.getElementById('guessInput').value = ''
 
     checkGuess(keyInput)
 }
-
 
 function setAnswer(key, answerList) {
     for (i = 0; i < key.length; i++) {
@@ -129,9 +141,6 @@ function updateGuesses(wrongGuessCounter, guessCountList) {
     guessCount = guessCount.join('')
     guessCountList.innerHTML = guessCount
 }
-
-//Ska det kontrolleras om det gissas på en bokstav som redan var rätt? 
-
 
 function checkGuess(keyInput) {
     if (wrongCharacters.includes(keyInput) || answer.includes(keyInput)) {
@@ -182,6 +191,7 @@ else if (gameState === 1) {
   mainContent.style.display = "grid"
   winModal.style.display = "none"
   loseModal.style.display = "none"
+  guessInput.focus()
 }
 else if (gameState === 2) {
   startModal.style.display = "none"

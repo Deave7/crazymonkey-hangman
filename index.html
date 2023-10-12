@@ -20,21 +20,21 @@
           unknown word by guessing letters. If too many letters which do not
           appear in the word are guessed, the player is hanged (and loses).
         </p>
-        <button id="startButton">Play Game</button>
+        <button id="startButton" class="button">Play Game</button>
       </div>
     </div>
 
     <div class="myModal" id="winModal">
       <div class="modal-content">
         <h2>You won!</h2>
-        <button class="restartButton">Restart Game</button>
+        <button class="restartButton button">Restart Game</button>
       </div>
     </div>
 
     <div class="myModal" id="loseModal">
       <div class="modal-content">
         <h2>Game Over</h2>
-        <button class="restartButton">Restart Game</button>
+        <button class="restartButton button">Restart Game</button>
       </div>
     </div>
 
@@ -114,8 +114,10 @@
           Incorrect guesses:
           <b>0 / 6</b>
           <ul id="failList"></ul>
+          <button class="restartButton button"> Reset</button>
         </section>
 
+        
         
       </main>
 
