@@ -36,6 +36,19 @@ function startGame() {
     wrongCharacters = [];
     key = getRandomWord()
     setAnswer(key, answerList)
+    hangman.forEach(function(item){
+      item.style.display = "none";
+  })
+  console.log(key);
+}
+
+function hangmansvg(counter) {
+  
+  /* counter = counter -1; */
+  console.log(counter);
+  console.log(hangman);
+
+
 }
 
 function resetGame(answerList, failList) {
@@ -114,7 +127,9 @@ function checkGuess(keyInput) {
         }
         else {
             wrongGuessCounter++
+            hangmansvg(wrongGuessCounter)
             if (wrongGuessCounter < 6) {
+              
               printFailList(wrongCharacters, failList)
               updateGuesses(wrongGuessCounter, guessCountList)
             }
@@ -127,17 +142,6 @@ function checkGuess(keyInput) {
     }
 }
 
-//Justerar bilden Maja
-
-//* Meny - tillåta lokal multiplayer 
-
-//* hint? slumpa fram en bokstav ur rätt ord
-
-//* svårghetsgrader? 
-
-//* poängsystem?
-
-//* highscores? 
 
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -152,7 +156,7 @@ const restartButton = document.getElementsByClassName("restartButton")
 startButton.addEventListener("click", () => {
   startModal.style.display = "none";
   mainContent.style.display = "block";
-
+startGame();
 })
 
 // om gameState - 2 = visas winModal och resten display: none;
@@ -192,63 +196,13 @@ else if (gameState === 3) {
 }
 
 
-// Få till så den går tillbaks till gameState 1 (starta om)
-/* restartButton.addEventListener("click", () => {
-  winModal.style.display = "none"
-  loseModal.style.display = "none"
-  mainContent.style.display = "block"
-}
-) */
 
-/* funktionen börjar på 0 och räknar uppåt för varje del av gubben som 
-blir synlig med hjälp av Majas provknapp i html
-counter är -1 för att börja på 0 för första index i array
-kan med hjälp av counter veta när spelet är slut */
+//* Meny - tillåta lokal multiplayer 
 
-/* if(counter > 5){
-    if (counter === 4){
-        alert("GAME OVER");
-    }
-} 
+//* hint? slumpa fram en bokstav ur rätt ord
 
-första if innan funktionen hangmanPart och andra efter*/
-/* 
-function hangmansvg(counter) {
-  counter = counter -1;
-  }
-  let hangmanPart = hangman[counter];
-  hangmanPart.style.display = "block"; */
-  /* counter++;  TEST MED MAJAS PROVKNAPP*/
-  
-/*   function startGame(){
-      
-  const head = document.getElementById("head");
-  head.style.display = "none";
-  
-  }
-   */
-  
-  
-  
-/*   function hangmansvg(params) {
-      if (guessIncorrect) {
-          /* ta fram en del av svg */
-      /* } else {
-          
-      }
-    }
- */
+//* svårghetsgrader? 
 
-  //Slumpfunktionen 
-  
-  //funktion som döljer alla element i array/gubben när spelet börjar
+//* poängsystem?
 
-
-/*   function startGame(){
-  hangman.forEach(function(item){
-      item.style.display = "none";
-  }
-  )
-
-
-} */
+//* highscores?
