@@ -19,6 +19,7 @@ guessButton.addEventListener('click', function() {
     guess()
 })
 
+
 //hämtar varje path från svg och deklarerar
 const head = document.getElementById("head");
 const body = document.getElementById("body");
