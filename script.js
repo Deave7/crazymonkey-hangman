@@ -79,9 +79,7 @@ hardButton.addEventListener("click" , () => {
 })
 
 continueButton.addEventListener("click", function(event) {
-    if (sameLetterModalOpen === "true") {
         closeSameLetterModal()
-    }
 });
 
 
@@ -99,8 +97,8 @@ addEventListener('keydown', (event) => {
         checkGameState(gameState)
     }
     else if (event.keyCode === 13 && gameState === 1) {
-        guess()
-        
+        guessButton.click()
+        continueButton.click()
     }
     else if (event.keyCode === 13 && gameState === 2) {
         startGame();
@@ -113,6 +111,11 @@ addEventListener('keydown', (event) => {
         checkGameState(gameState)
     }
 })
+
+
+
+
+
 
 
 window.onclick = function(event) {
@@ -190,7 +193,7 @@ function getRandomWord(gameDifficulty) {
 function guess() {
     keyInput = document.getElementById('guessInput').value.toLowerCase()
     document.getElementById('guessInput').value = ''
-
+    continueButton.disabled = 'true'
     checkGuess(keyInput)
 }
 
@@ -256,11 +259,18 @@ function sameGuess() {
     sameLetterModal.style.zIndex = "1"
     mainContent.style.filter = "blur(2px)"
     guessInput.disabled = "true"
+    guessButton.disabled = "true"
+
+    setTimeout(function() {
+        continueButton.removeAttribute('disabled')
+    }, 100)
+
 }
 
 function closeSameLetterModal() {
         sameLetterModal.style.display = "none";
         mainContent.style.filter = "none";
+        guessButton.removeAttribute('disabled')
         guessInput.removeAttribute('disabled');
         guessInput.focus();
 }
