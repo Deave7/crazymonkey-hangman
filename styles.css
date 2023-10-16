@@ -141,3 +141,8 @@ section.answer-container {
     padding-top: 2rem;
 }
 
+
+.active {
+    background-color: black;
+    color: white;
+}

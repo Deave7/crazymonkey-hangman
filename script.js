@@ -18,15 +18,20 @@ const answerList = document.querySelector("section.answer-container")
 const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
 const correctWord = document.getElementsByClassName("correctWord")
-
+const startButton = document.getElementById("startButton")
+const restartButton = document.getElementsByClassName("restartButton")
+const buttonContainer = document.getElementById("buttonContainer")
+const standardButton = document.getElementById("standardButton")
+const easyButton = document.getElementById("easyButton")
+const mediumButton = document.getElementById("mediumButton")
+const hardButton = document.getElementById("hardButton")
+const difBtn = document.getElementsByClassName("difBtn")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
 const mainContent = document.getElementById("mainContent")
 const winModal = document.getElementById("winModal")
 const loseModal = document.getElementById("loseModal")
-const startButton = document.getElementById("startButton")
-const restartButton = document.getElementsByClassName("restartButton")
 const sameLetterModal = document.getElementById("sameLetterModal")
 
 //Svg
@@ -56,6 +61,30 @@ guessButton.addEventListener('click', function() {
     
 })
 
+standardButton.addEventListener("click" , () => {
+    gameDifficulty = "standard"
+})
+
+easyButton.addEventListener("click" , () => {
+    gameDifficulty = "easy"
+})
+
+mediumButton.addEventListener("click" , () => {
+    gameDifficulty = "medium"
+})
+
+hardButton.addEventListener("click" , () => {
+    gameDifficulty = "hard"
+})
+
+for (let i = 0; i < difBtn.length; i++) {
+    difBtn[i].addEventListener("click", function() {
+      let current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  } 
+
 addEventListener('keydown', (event) => {
     if (event.keyCode === 13 && gameState === 0) {
         startGame()
@@ -76,6 +105,28 @@ addEventListener('keydown', (event) => {
         checkGameState(gameState)
     }
 })
+
+
+
+  document.addEventListener("click", function (event) {
+    if (sameLetterModal.style.display === "block" && event.target.tagName === "BUTTON") {
+        sameLetterModal.style.display = "none";
+        mainContent.style.filter = "none";
+        guessInput.removeAttribute('disabled')
+        guessInput.focus()
+    }
+});
+
+window.onclick = function(event) {
+    if (event.target == sameLetterModal) {
+        sameLetterModal.style.display = "none";
+        mainContent.style.filter = "none";
+        guessInput.removeAttribute('disabled')
+        guessInput.focus()
+        
+      }
+      
+  }
 
 checkGameState(gameState)
 
@@ -126,22 +177,22 @@ function getRandomWord(gameDifficulty) {
     
     if (gameDifficulty === "standard") {
         key = randomWords[Math.floor(Math.random() * randomWords.length)]
-        return key
+        
     }
     else if (gameDifficulty === "easy") {
-        key = easyWords[Math.floor(Math.random() * randomWords.length)]
-        return key
+        key = easyWords[Math.floor(Math.random() * easyWords.length)]
+        
     }
     else if(gameDifficulty === "medium") {
-        key = mediumWords[Math.floor(Math.random() * randomWords.length)]
-        return key
+        key = mediumWords[Math.floor(Math.random() * mediumWords.length)]
+        
     }
     else if (gameDifficulty === "hard") {
-        key = hardWords[Math.floor(Math.random() * randomWords.length)]
-        return key
+        key = hardWords[Math.floor(Math.random() * hardWords.length)]
+        
     }
-   
-}
+    return key
+} 
 
 function guess() {
     keyInput = document.getElementById('guessInput').value.toLowerCase()
@@ -171,7 +222,7 @@ function updateGuesses(wrongGuessCounter, guessCountList) {
 
 function checkGuess(keyInput) {
     if (wrongCharacters.includes(keyInput) || answer.includes(keyInput)) {
-        prompt(`You have already guessed: ${keyInput}, please choose a different letter `)
+        sameGuess()
     }
     else if (key.includes(keyInput)) {
             for(i = 0; i < key.length; i++) {
@@ -211,6 +262,7 @@ function sameGuess() {
     sameLetterModal.style.opacity = "1"
     sameLetterModal.style.zIndex = "1"
     mainContent.style.filter = "blur(2px)"
+    guessInput.disabled = "true"
 
 }
 
@@ -252,4 +304,11 @@ else if (gameState === 3) {
 }
 }
 }
+
+
+
+
+
+
+
 
