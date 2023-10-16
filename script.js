@@ -18,6 +18,7 @@ const answerList = document.querySelector("section.answer-container")
 const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
 const correctWord = document.getElementsByClassName("correctWord")
+
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -36,6 +37,7 @@ const arms = document.getElementById("arms");
 const legs = document.getElementById("legs");
 const scaffold = document.getElementById("scaffold");
 const hangman = [ground, scaffold, head, body, arms, legs];
+
 //Sätter knappar
 startButton.addEventListener("click", () => {
   startGame();
@@ -210,7 +212,6 @@ function sameGuess() {
     sameLetterModal.style.zIndex = "1"
     mainContent.style.filter = "blur(2px)"
 
-    //close modal on clicking! also add the funtion in checkGuess above 
 }
 
 
@@ -252,13 +253,3 @@ else if (gameState === 3) {
 }
 }
 
-
-//* Meny - tillåta lokal multiplayer 
-
-//* hint? slumpa fram en bokstav ur rätt ord
-
-//* svårghetsgrader? 
-
-//* poängsystem?
-
-//* highscores?
