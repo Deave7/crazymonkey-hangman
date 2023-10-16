@@ -17,7 +17,7 @@ body {
 
 .container {
     display: grid;
-    width: 95%;
+    width: 60%;
     background: #ffffff;
     grid-template-rows: auto 1fr auto;
     border-radius: 0.5rem;
@@ -32,6 +32,7 @@ main.item {
     justify-content: center;
 }
 
+
 main.item > * {
     margin-bottom: 2rem;
 }
@@ -45,37 +46,31 @@ main.item > * {
 .guesses {
     display: flex;
     flex-direction: column;
-    
-    
+}
+
+.guesses > ul {
+    padding-top: 0.5rem;
 }
 
 #guessInput {
-    border-radius: 0.5rem;
+    border-radius: 8px;
     width: 11rem;
-    height: 2.6rem;
+    height: 2rem;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+    border: 2px solid rgba(0, 0, 0, 0.507)
 }
 
 .button {
-
-  z-index: 1;
   background-color: #ffffff;
+  height: 2rem;
+  width: 4rem;
+  border: 2px solid rgba(0, 0, 0, 0.507);
   border-radius: 8px;
-  border-width: 0;
   color: #333333;
   cursor: pointer;
-  line-height: 20px;
-  list-style: none;
-  padding: 10px 12px;
   text-align: center;
   transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  user-select: none;
-
-  touch-action: manipulation;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .button:hover {
@@ -84,12 +79,10 @@ main.item > * {
 
 .guesses > .button {
     margin-top: auto;
-    
 }
 
 #mainContent > main > section.guesses {
     margin: 0;
-    
 }
 
 #guessInput:focus {
@@ -117,6 +110,10 @@ main.item > * {
     height: 100%;
 }
 
+.modal-content > * {
+    margin: 0.5rem;
+}
+
 .modal-content {
     background: #ffffff;
     padding: 20px;
@@ -127,9 +124,12 @@ main.item > * {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#winModal > div > img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 section.answer-container {
-    letter-spacing: 0.5rem;
-      
+    letter-spacing: 0.5rem; 
 }
 
 .win-loss-container {
@@ -138,9 +138,14 @@ section.answer-container {
 }
 
 .image-container{
-    padding: 1rem;
+    padding-top: 2rem;
 }
 
+
+.active {
+    background-color: black;
+    color: white;
+}
 #menuToggle
 {
   display: block;
