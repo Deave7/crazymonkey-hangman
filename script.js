@@ -305,6 +305,16 @@ else if (gameState === 3) {
 }
 }
 
+/* // JavaScript function to toggle the menu visibility
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  if (menu.style.display === "flex") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+} */
+
 
 
 
