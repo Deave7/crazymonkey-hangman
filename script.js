@@ -21,11 +21,12 @@ const correctWord = document.getElementsByClassName("correctWord")
 const startButton = document.getElementById("startButton")
 const restartButton = document.getElementsByClassName("restartButton")
 const buttonContainer = document.getElementById("buttonContainer")
-const standardButton = document.getElementById("standardButton")
-const easyButton = document.getElementById("easyButton")
-const mediumButton = document.getElementById("mediumButton")
-const hardButton = document.getElementById("hardButton")
-const difBtn = document.getElementsByClassName("difBtn")
+const standardButton = document.querySelectorAll(".standardButton")
+const easyButton = document.querySelectorAll(".easyButton")
+const mediumButton = document.querySelectorAll(".mediumButton")
+const hardButton = document.querySelectorAll(".hardButton")
+const difBtn = document.querySelectorAll(".difBtn")
+const hamburgerIcon = document.querySelector("body > header > div.hamburger-icon > div")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -61,27 +62,48 @@ guessButton.addEventListener('click', function() {
     
 })
 
-standardButton.addEventListener("click" , () => {
+for(i = 0; i < standardButton.length; i++) {
+    standardButton[i].addEventListener("click" , () => {
     gameDifficulty = "standard"
-})
+    })
 
-easyButton.addEventListener("click" , () => {
+}
+
+for(i = 0; i < easyButton.length; i++) {
+    easyButton[i].addEventListener("click" , () => {
     gameDifficulty = "easy"
-})
+    })
+}
 
-mediumButton.addEventListener("click" , () => {
+for(i = 0; i < mediumButton.length; i++) {
+    mediumButton[i].addEventListener("click" , () => {
     gameDifficulty = "medium"
-})
+    })
+}
 
-hardButton.addEventListener("click" , () => {
+for(i = 0; i < hardButton.length; i++) {
+    hardButton[i].addEventListener("click" , () => {
     gameDifficulty = "hard"
-})
+    })
+
+}
 
 for (let i = 0; i < difBtn.length; i++) {
     difBtn[i].addEventListener("click", function() {
-      let current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
+    let buttonType = this.className.split(' ')[0]    
+    let current = document.querySelectorAll(".active");
+
+    for (j = 0; j < current.length; j++) {
+        current[j].classList.remove('active')
+    }
+
+    let buttonsToActivate = document.querySelectorAll('.' + buttonType)
+    for(k = 0; k < buttonType.length; k++) {
+        if(buttonsToActivate[k])
+
+        buttonsToActivate[k].classList.add('active')
+    }
+      
     });
   } 
 
@@ -269,43 +291,47 @@ function sameGuess() {
 
 function checkGameState (gameState) {
 if (gameState === 0) {
-  startModal.style.display = "grid"
-  mainContent.style.display = "none"
-  winModal.style.display = "none"
-  loseModal.style.display = "none"
-  sameLetterModal.style.display = "none"
+    startModal.style.display = "grid"
+    mainContent.style.display = "none"
+    winModal.style.display = "none"
+    loseModal.style.display = "none"
+    sameLetterModal.style.display = "none"
+    hamburgerIcon.style.display = "none"
+
 } 
 else if (gameState === 1) {
-  startModal.style.display = "none"
-  mainContent.style.display = "grid"
-  winModal.style.display = "none"
-  loseModal.style.display = "none"
-  sameLetterModal.style.display = "none"
-  guessInput.focus()
+    startModal.style.display = "none"
+    mainContent.style.display = "grid"
+    winModal.style.display = "none"
+    loseModal.style.display = "none"
+    sameLetterModal.style.display = "none"
+    hamburgerIcon.style.display = "grid"
+    guessInput.focus()
 }
 else if (gameState === 2) {
-  startModal.style.display = "none"
-  mainContent.style.display = "none"
-  winModal.style.display = "grid"
-  loseModal.style.display = "none"
-  sameLetterModal.style.display = "none"
-  for (let i = 0; i < correctWord.length; i++) {
-    correctWord[i].innerHTML = "The correct word was: " + key;
+    startModal.style.display = "none"
+    mainContent.style.display = "none"
+    winModal.style.display = "grid"
+    loseModal.style.display = "none"
+    sameLetterModal.style.display = "none"
+
+    for (let i = 0; i < correctWord.length; i++) {
+        correctWord[i].innerHTML = "The correct word was: " + key;
 }
 } 
 else if (gameState === 3) {
-  startModal.style.display = "none"
-  mainContent.style.display = "none"
-  winModal.style.display = "none"
-  loseModal.style.display = "grid"
-  sameLetterModal.style.display = "none"
-  for (let i = 0; i < correctWord.length; i++) {
-    correctWord[i].innerHTML = "The correct word was: " + key;
+    startModal.style.display = "none"
+    mainContent.style.display = "none"
+    winModal.style.display = "none"
+    loseModal.style.display = "grid"
+    sameLetterModal.style.display = "none"
+
+    for (let i = 0; i < correctWord.length; i++) {
+        correctWord[i].innerHTML = "The correct word was: " + key;
 }
 }
 }
 
-/* // JavaScript function to toggle the menu visibility
 function toggleMenu() {
   var menu = document.getElementById("menu");
   if (menu.style.display === "flex") {
@@ -313,7 +339,7 @@ function toggleMenu() {
   } else {
     menu.style.display = "flex";
   }
-} */
+}
 
 
 

@@ -32,12 +32,12 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    padding-top: 3rem;
+    padding-top: 6rem;
 }
 
 
 .item > * {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 .guesses {
@@ -45,8 +45,12 @@ body {
     flex-direction: column;
 }
 
+.guesses > * {
+    margin-bottom: 0.5rem;
+}
+
 .guesses > ul {
-    padding-top: 0.5rem;
+    font-weight: bold;
 }
 
 #guessInput {
@@ -93,7 +97,7 @@ body {
 }
 
 #failList > * {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 .myModal {
@@ -144,15 +148,17 @@ section.answer-container {
     color: white;
 }
 
-/*   CSS for the hidden hamburger menu 
+
  .hamburger-menu {
-    display: none; Hidden by default 
+    display: none; 
     background-color: #ffffff;
     justify-content: space-evenly;
+    align-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
   
   }
 
-  Styling for the hamburger icon 
   .hamburger-icon {
     cursor: pointer;
     height: 10%;
@@ -161,16 +167,16 @@ section.answer-container {
   }
 
 
-      Style for the menu links
-      .hamburger-menu a {
-    display: block; Display each link on a new line
+    .hamburger-menu a {
+    display: block; 
     text-decoration: none;
     
   }
 
-  header{
+  header {
+    display: flex;
     z-index: 1;
     position: absolute;
     width: 60%;
     margin-top: 4rem;
-  } */
+  }
