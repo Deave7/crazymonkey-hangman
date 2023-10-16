@@ -2,7 +2,7 @@
 
 let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
 let gameDifficulty = "standard";
-let wrongGuessCounter = 0;
+let wrongGuessCounter = -1;
 let key = ''
 let answer ='';
 let wrongCharacters = [];
@@ -18,14 +18,15 @@ const answerList = document.querySelector("section.answer-container")
 const guessInput = document.getElementById("guessInput")
 const guessCountList = document.querySelector("#mainContent > main > section.guesses > b")
 const correctWord = document.getElementsByClassName("correctWord")
+const buttonContainer = document.getElementById("buttonContainer")
 const startButton = document.getElementById("startButton")
 const restartButton = document.getElementsByClassName("restartButton")
-const buttonContainer = document.getElementById("buttonContainer")
 const standardButton = document.getElementById("standardButton")
 const easyButton = document.getElementById("easyButton")
 const mediumButton = document.getElementById("mediumButton")
 const hardButton = document.getElementById("hardButton")
 const difBtn = document.getElementsByClassName("difBtn")
+const continueButton = document.getElementById("continueButton")
 // Modals
 const myModal = document.getElementsByClassName("myModal")
 const startModal = document.getElementById("startModal")
@@ -77,6 +78,11 @@ hardButton.addEventListener("click" , () => {
     gameDifficulty = "hard"
 })
 
+continueButton.addEventListener("click", function(event) {
+        closeSameLetterModal()
+});
+
+
 for (let i = 0; i < difBtn.length; i++) {
     difBtn[i].addEventListener("click", function() {
       let current = document.getElementsByClassName("active");
@@ -91,8 +97,8 @@ addEventListener('keydown', (event) => {
         checkGameState(gameState)
     }
     else if (event.keyCode === 13 && gameState === 1) {
-        guess()
-        
+        guessButton.click()
+        continueButton.click()
     }
     else if (event.keyCode === 13 && gameState === 2) {
         startGame();
@@ -108,24 +114,14 @@ addEventListener('keydown', (event) => {
 
 
 
-  document.addEventListener("click", function (event) {
-    if (sameLetterModal.style.display === "block" && event.target.tagName === "BUTTON") {
-        sameLetterModal.style.display = "none";
-        mainContent.style.filter = "none";
-        guessInput.removeAttribute('disabled')
-        guessInput.focus()
-    }
-});
+
+
+
 
 window.onclick = function(event) {
     if (event.target == sameLetterModal) {
-        sameLetterModal.style.display = "none";
-        mainContent.style.filter = "none";
-        guessInput.removeAttribute('disabled')
-        guessInput.focus()
-        
+        closeSameLetterModal()
       }
-      
   }
 
 checkGameState(gameState)
@@ -197,7 +193,7 @@ function getRandomWord(gameDifficulty) {
 function guess() {
     keyInput = document.getElementById('guessInput').value.toLowerCase()
     document.getElementById('guessInput').value = ''
-
+    continueButton.disabled = 'true'
     checkGuess(keyInput)
 }
 
@@ -263,7 +259,20 @@ function sameGuess() {
     sameLetterModal.style.zIndex = "1"
     mainContent.style.filter = "blur(2px)"
     guessInput.disabled = "true"
+    guessButton.disabled = "true"
 
+    setTimeout(function() {
+        continueButton.removeAttribute('disabled')
+    }, 100)
+
+}
+
+function closeSameLetterModal() {
+        sameLetterModal.style.display = "none";
+        mainContent.style.filter = "none";
+        guessButton.removeAttribute('disabled')
+        guessInput.removeAttribute('disabled');
+        guessInput.focus();
 }
 
 
