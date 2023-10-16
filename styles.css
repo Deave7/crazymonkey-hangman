@@ -10,7 +10,6 @@ body {
     color: black;
     background: linear-gradient(90deg, rgba(204,211,255,1) 0%, rgba(209,255,254,1) 50%, rgba(242,255,234,1) 100%);
     justify-content: center;
-    align-items: center;
     text-align: center;
     height: 100vh;
     margin: auto;
@@ -30,8 +29,15 @@ body {
 main.item {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
+
+
+main.item > * {
+    margin-bottom: 2rem;
+}
+
+
 
 .item p {
     font-weight: bold;
@@ -135,3 +141,8 @@ section.answer-container {
     padding-top: 2rem;
 }
 
+
+.active {
+    background-color: black;
+    color: white;
+}
