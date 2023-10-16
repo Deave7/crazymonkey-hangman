@@ -2,7 +2,7 @@
 
 let gameState = 0; // 0 = spelet har ej startat första gången, 1 = spelet körs, 2 = vinst, 3 = förlust 
 let gameDifficulty = "standard";
-let wrongGuessCounter = 0;
+let wrongGuessCounter = -1;
 let key = ''
 let answer ='';
 let wrongCharacters = [];
