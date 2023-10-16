@@ -23,24 +23,21 @@ body {
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 3rem;
 }
 
-main.item {
+
+.item {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    padding-top: 6rem;
 }
 
 
-main.item > * {
-    margin-bottom: 2rem;
-}
-
-
-
-.item p {
-    font-weight: bold;
+.item > * {
+    margin-bottom: 3rem;
 }
 
 .guesses {
@@ -48,8 +45,12 @@ main.item > * {
     flex-direction: column;
 }
 
+.guesses > * {
+    margin-bottom: 0.5rem;
+}
+
 .guesses > ul {
-    padding-top: 0.5rem;
+    font-weight: bold;
 }
 
 #guessInput {
@@ -96,7 +97,7 @@ main.item > * {
 }
 
 #failList > * {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 .myModal {
@@ -146,3 +147,36 @@ section.answer-container {
     background-color: black;
     color: white;
 }
+
+
+ .hamburger-menu {
+    display: none; 
+    background-color: #ffffff;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+  
+  }
+
+  .hamburger-icon {
+    cursor: pointer;
+    height: 10%;
+    width: 10%;
+    font-size: 2rem;
+  }
+
+
+    .hamburger-menu a {
+    display: block; 
+    text-decoration: none;
+    
+  }
+
+  header {
+    display: flex;
+    z-index: 1;
+    position: absolute;
+    width: 60%;
+    margin-top: 4rem;
+  }

@@ -19,10 +19,10 @@
           You have may guess the wrong letter five times, on the sixth you lose (and the straw man is hanged!)
         </p>
         <div class="buttonContainer">
-        <button id="standardButton" class="button difBtn active">Standard</button>
-        <button id="easyButton" class="button difBtn">Easy</button>
-        <button id="mediumButton" class="button difBtn">Medium</button>
-        <button id="hardButton" class="button difBtn">Hard</button>
+          <button class="standardButton button difBtn active">Standard</button>
+          <button class="easyButton button difBtn">Easy</button>
+          <button class="mediumButton button difBtn">Medium</button>
+          <button class="hardButton button difBtn">Hard</button>
       </div>
         <button id="startButton" class="button">Start</button>
       </div>
@@ -54,9 +54,24 @@
       </div>
     </div>
 
+    <header>
+             
+              <div class="hamburger-icon" onclick="toggleMenu()">
+                <div>&#9776;</div>
+              </div>
+              
+              
+              <div class="hamburger-menu" id="menu">
+                <button class="restartButton button">Restart</button>
+                <button class="standardButton button difBtn active">Standard</button>
+                <button class="easyButton button difBtn">Easy</button>
+                <button class="mediumButton button difBtn">Medium</button>
+                <button class="hardButton button difBtn">Hard</button>
+              </div>
+    </header>
 
     <div id="mainContent" class="container">
-      
+
       <main class="item">
         <section class="image-container">
           <svg
@@ -65,7 +80,7 @@
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <!-- width="501" height="565" -->
+          
             <ellipse
               id="ground"
               cx="250.5"
@@ -125,8 +140,9 @@
         </section>
 
         <section class="guesses">
-          Incorrect guesses:
+          <p>Incorrect guesses:</p>
           <b>0 / 6</b>
+          <p>Used letters:</p>
           <ul id="failList"></ul>
         </section>
 
