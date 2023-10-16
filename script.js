@@ -219,7 +219,26 @@ else if (gameState === 3) {
 
 
 
+//ATT GÖRA TILL PÅ MÅNDAG: 
+// - stänga modal (funktion nedan)
+// - Ta fram modalen gustav gjorde, koppla den istället för prompt
+// - förstå koden (speciellt JS)
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == startModal) {
+        startModal.style.display = "none";
+       
+      }
+   else if (event.target == winModal) {
+      winModal.style.display = "none";
+      
+    }
+    else if (event.target == loseModal) {
+        loseModal.style.display = "none";
+        
+      }
+  }
 
 
 
