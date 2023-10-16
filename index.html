@@ -6,50 +6,55 @@
     <title>Hangman</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <div class="myModal" id="startModal">
       <div class="modal-content">
         <h1>Hangman</h1>
-        <h2>How to play Hangman</h2>
+        <h2>How to play:</h2>
         <p>
-          Hangman is a simple word guessing game. Players try to figure out an
-          unknown word by guessing letters. If too many letters which do not
-          appear in the word are guessed, the player is hanged (and loses).
+          Hangman is a simple word guessing game.
+          Players try to figure out an unknown word by guessing letters.<br> 
+          You have may guess the wrong letter five times, on the sixth you lose (and the straw man is hanged!)
         </p>
-        <button id="startButton" class="button">Play Game</button>
+        <button id="startButton" class="button">Start</button>
       </div>
     </div>
 
     <div class="myModal" id="winModal">
       <div class="modal-content">
-        <h2>You won!</h2>
+        <h2>Congratulations, you managed to save the strawman by guessing the correct word! </h2>
+        <img src="pictures/win-text.svg" height="100">
         <div class="correctWord"></div>
-        <button class="restartButton button">Restart Game</button>
+        <button class="restartButton button">Restart</button>
       </div>
     </div>
 
     <div class="myModal" id="loseModal">
       <div class="modal-content">
-        <h2>Game Over</h2>
+        <h2>Game Over!</h2> 
+        <p>You used up all your guesses and the strawman was hanged!</p>
+        <img src="pictures/hangman.svg" alt="a hanging strawman">
         <div class="correctWord"></div>
-        <button class="restartButton button">Restart Game</button>
+        <button class="restartButton button">Restart</button>
+      </div>
+    </div>
+
+    <div class="myModal" id="sameLetterModal">
+      <div class="modal-content">
+        <p>You already guessed that letter! Please try something new</p>
       </div>
     </div>
 
     <div class="sameLetterModal"></div>
 
     <div id="mainContent" class="container">
-      <header class="item">
-        <h1>Hangman</h1>
-      </header>
+      
       <main class="item">
         <section class="image-container">
           <svg
-            width="60%"
+            height="400"
             viewBox="0 0 501 565"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -117,16 +122,11 @@
           Incorrect guesses:
           <b>0 / 6</b>
           <ul id="failList"></ul>
-          <button class="restartButton button"> Reset</button>
         </section>
 
         
         
       </main>
-
-      <footer class="item">
-        <p>Made by Maja Wennstam, Ossian Igelberg and Gustav Syrén</p> 
-      </footer>
     </div>
   </body>
 </html>
