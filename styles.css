@@ -173,4 +173,9 @@ header {
     display: block; 
     text-decoration: none;  
 }
+@media (max-height: 900px) {
+    svg {
+        height: 200px;
+    }
+}
 
