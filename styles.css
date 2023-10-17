@@ -123,6 +123,7 @@ main.item > * {
 .modal-content > h2 {
     font-size: 1.2em;
     padding-top: 1.4rem;
+    padding-bottom: 0.5rem;
 }
 
 .modal-content > p {
