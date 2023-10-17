@@ -322,6 +322,7 @@ else if (gameState === 2) {
     winModal.style.display = "grid"
     loseModal.style.display = "none"
     sameLetterModal.style.display = "none"
+    hamburgerIcon.style.display = "none"
 
     for (let i = 0; i < correctWord.length; i++) {
         correctWord[i].innerHTML = "The correct word was: " + key;
@@ -333,6 +334,7 @@ else if (gameState === 3) {
     winModal.style.display = "none"
     loseModal.style.display = "grid"
     sameLetterModal.style.display = "none"
+    hamburgerIcon.style.display = "none"
 
     for (let i = 0; i < correctWord.length; i++) {
         correctWord[i].innerHTML = "The correct word was: " + key;
