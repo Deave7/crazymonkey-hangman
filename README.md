@@ -1,7 +1,7 @@
 # crazymonkey-hangman
 
 Gruppuppgift WD-JS 
-Deltagare: Ossian, Maja och Gustav 
+Deltagare: Ossian Igelberg, Maja Wennstam och Gustav Syrén
 
 Hänga gubbe - inlämningssuppgift
 
