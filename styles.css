@@ -1,3 +1,5 @@
+/* Normaliserar sidan */
+
 * {
     padding: 0;
     margin: 0;
@@ -15,43 +17,65 @@ body {
     margin: auto;
 }
 
-.container {
-    display: grid;
-    width: 60%;
-    background: #ffffff;
-    grid-template-rows: auto 1fr auto;
-    border-radius: 0.5rem;
+/* Stylar alla knappar */
+
+.button {
+    background-color: #ffffff;
+    height: 2rem;
+    width: 4rem;
+    border: 2px solid rgba(0, 0, 0, 0.507);
+    border-radius: 8px;
+    color: #333333;
+    cursor: pointer;
+    text-align: center;
+    transition: all 200ms;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 1.5rem;
-    margin-top: 3rem;
 }
 
+.active {
+    background-color: black;
+    color: white;
+}
+  
+.button:hover {
+    background-color: rgb(228, 228, 228);
+}
 
-.item {
+#startButton {
+    width: 17rem;
+    height: 3rem;
+    font-size: 1.5em;
+}
+
+/* Container för hela innehållet */
+
+#mainContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     padding-top: 6rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    width: 60%;
+    background: #ffffff;
 }
 
-
-.item > * {
+#mainContent > * {
     margin-bottom: 3rem;
 }
 
-.guesses {
-    display: flex;
-    flex-direction: column;
+section.answer-container {
+    letter-spacing: 0.5rem; 
 }
 
-.guesses > * {
-    margin-bottom: 0.5rem;
+.image-container{
+    padding-top: 2rem;
 }
 
-.guesses > ul {
-    font-weight: bold;
-}
+/* Styling för inputrutan */
 
 #guessInput {
     border-radius: 8px;
@@ -62,39 +86,15 @@ body {
     border: 2px solid rgba(0, 0, 0, 0.507)
 }
 
-#startButton {
-    width: 17rem;
-    height: 3rem;
-    font-size: 1.5em;
+.guesses > * {
+    margin-bottom: 0.5rem;
 }
 
-.button {
-  background-color: #ffffff;
-  height: 2rem;
-  width: 4rem;
-  border: 2px solid rgba(0, 0, 0, 0.507);
-  border-radius: 8px;
-  color: #333333;
-  cursor: pointer;
-  text-align: center;
-  transition: all 200ms;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.button:hover {
-    background-color: rgb(228, 228, 228);
-  }
-
-.guesses > .button {
-    margin-top: auto;
+.guesses > ul {
+    font-weight: bold;
 }
 
-#mainContent > main > section.guesses {
-    margin: 0;
-}
-
-#guessInput:focus {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+/* Stylar listan med använda bokstäver */
 
 #failList {
     display: flex;
@@ -106,6 +106,8 @@ body {
     margin-left: 0.5rem;
 }
 
+/* Stylar modalrutor */
+
 .myModal {
     display: flex;
     justify-content: center;
@@ -115,6 +117,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    width: 30em;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .modal-content > * {
@@ -131,68 +143,34 @@ body {
     padding-bottom: 1.4rem;
 }
 
-.modal-content {
-    background: #ffffff;
-    padding: 20px;
-    width: 30em;
-    border-radius: 5px;
-    text-align: center;
-    color: black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+/* Stylar hamburgarmenyn */
 
-#winModal > div > img {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-section.answer-container {
-    letter-spacing: 0.5rem; 
-}
-
-.win-loss-container {
-    color: black;
+header {
+    display: flex;
+    z-index: 1;
     position: absolute;
+    width: 60%;
+    margin-top: 4rem;
 }
 
-.image-container{
-    padding-top: 2rem;
-}
-
-
-.active {
-    background-color: black;
-    color: white;
-}
-
-
- .hamburger-menu {
+.hamburger-menu {
     display: none; 
     background-color: #ffffff;
     justify-content: space-evenly;
     align-content: center;
     flex-grow: 1;
     flex-wrap: wrap;
-  
-  }
+}
 
-  .hamburger-icon {
+.hamburger-icon {
     cursor: pointer;
     height: 10%;
     width: 10%;
     font-size: 2rem;
-  }
+}
 
-
-    .hamburger-menu a {
+.hamburger-menu a {
     display: block; 
-    text-decoration: none;
-    
-  }
+    text-decoration: none;  
+}
 
-  header {
-    display: flex;
-    z-index: 1;
-    position: absolute;
-    width: 60%;
-    margin-top: 4rem;
-  }
